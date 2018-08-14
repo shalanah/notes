@@ -3,7 +3,7 @@ Notes and examples from a Front End Masters course.
 
 ## TOC
 - [Compound Components: Basic](#compound-components-basic)
-- [Compound Components: Flexible (uses context)](#compound-components-flexible)
+- [Compound Components: Flexible (uses context)](#compound-components-flexible-uses-context)
 - [Render Props: Basic](#render-props-basic)
 - [Render Props: Prop Collections](#render-props-prop-collections)
 - [Render Props: Prop Getters](#render-props-prop-getters)
