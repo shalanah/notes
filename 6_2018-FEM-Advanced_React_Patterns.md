@@ -2,18 +2,18 @@
 Notes and examples from a Front End Masters course.
 
 ## TOC
-- [Compound Components: Basic](#1)
-- [Compound Components: Flexible (uses context)](#2)
-- [Render Props: Basic](#3)
-- [Render Props: Prop Collections](#4)
-- [Render Props: Prop Getters](#5)
-- [State Initializers](#6)
-- [State Reducer: Basic](#7)
-- [State Reducer: With Types](#8)
-- [Primer](#9)
-- [Provider Pattern](#10)
+- [Compound Components: Basic](#compound-components-basic)
+- [Compound Components: Flexible (uses context)](#compound-components-flexible-uses-context-)
+- [Render Props: Basic](#render-props-basic)
+- [Render Props: Prop Collections](#render-Props-prop-collections)
+- [Render Props: Prop Getters](#render-props-prop-getters)
+- [State Initializers](#state-initializers)
+- [State Reducer: Basic](#state-reducer-basic)
+- [State Reducer: With Types](#state-reducer-with-types)
+- [Primer](#primer)
+- [Provider Pattern](#provider-pattern)
 
-## Compound Components: Basic <a name="1"></a>
+## Compound Components: Basic
 - Allows consumer of component to reorder elements
 - Components that share implicit state with main component
 - Likens it to `<select><options>` in html
@@ -51,7 +51,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## Compound Components: Flexible (uses context) <a name="2"></a>
+## Compound Components: Flexible (uses context)
 - Uses context to pass data to static components
 - Avoid rerenders by only passing this.state instead of each prop individually
 
@@ -104,7 +104,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## Render Props: Basic <a name="3"></a>
+## Render Props: Basic
 - More work for the implentor but also way more freedom
 - Explicit about what state/props you are exposing
 - Children pass as one elem (not array)
@@ -146,7 +146,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## Render Props: Prop Collections <a name="4"></a>
+## Render Props: Prop Collections
 - Uses render props uses a function to get collections of props used for similiar components/html tags
 ### Usage
 ```jsx
@@ -187,7 +187,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## Render Props: Prop Getters <a name="5"></a>
+## Render Props: Prop Getters
 - Improves prop collections and merges like props
 
 ### Usage
@@ -240,7 +240,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## State Initializers <a name="6"></a>
+## State Initializers
 - Can be used outside of render props but using with for now
 - Allows you to reset to an initial state and to start at a given state
 ### Usage
@@ -299,7 +299,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## State Reducer: Basic <a name="7"></a>
+## State Reducer: Basic
 - Enables users to control how the state logic works
 - Nothing to do with redux
 - Breaks enscapsulation but allows for a lot of flexibility
@@ -421,7 +421,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## State Reducer: With Types <a name="8"></a>
+## State Reducer: With Types
 - So that we check context of updating state and update accordingly
 - Helpful for different user inputs or actions
 ### Usage
@@ -558,7 +558,7 @@ class Toggle extends React.Component {
 }
 ```
 
-## Primer <a name="9"></a>
+## Primer
 - Two separate components to synchronize states
 - Likens it to two-way binding in Angular
 ### Usage
@@ -617,7 +617,7 @@ class Toggle extends React.Component {
   }
 }
 ```
-## Provider Pattern <a name="10"></a>
+## Provider Pattern
 - Solves the problem of prop drilling
 - You can expand to use this with render props
 ### Usage
