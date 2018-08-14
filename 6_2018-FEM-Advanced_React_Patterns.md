@@ -5,7 +5,7 @@ Notes and examples from a Front End Masters course.
 - [Compound Components: Basic](#compound-components-basic)
 - [Compound Components: Flexible (uses context)](#compound-components-flexible)
 - [Render Props: Basic](#render-props-basic)
-- [Render Props: Prop Collections](#render-Props-prop-collections)
+- [Render Props: Prop Collections](#render-props-prop-collections)
 - [Render Props: Prop Getters](#render-props-prop-getters)
 - [State Initializers](#state-initializers)
 - [State Reducer: Basic](#state-reducer-basic)
