@@ -104,7 +104,7 @@ console.log('Me first')
 // - printHello runs
 ```
 - Callback/Task Queue
-- Microtask/Job Queue (event loop prioritizes this loop)
+- Microtask/Job Queue (event loop prioritizes this queue)
 - Need to look things up to figure out which queue deferred fuctions go to
 - Technically the status of the Promise Object that triggers the onFullfillment array functions (`pending`, `fullfilled`, `rejected` -> triggers onRejection `.catch` or second function parameter on `.then`)
 - Spec... so yeah browsers sometimes do what they want (but modern should be pretty consistent)
