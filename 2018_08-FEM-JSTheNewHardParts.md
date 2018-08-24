@@ -4,7 +4,8 @@ Notes and examples from a Front End Masters course.
 ## TOC
 - [JavaScript Code Execution](#javaScript-code-execution)
 - [Web Browser APIs](#web-browser-apisnode-background-threads)
-- [Promises](#promises)
+- [Intro Promises](#intro-promises)
+- [Promises & Microtask Queue](#promises--microtask-queue)
 
 ## JavaScript Code Execution
 ### Global execution context
@@ -49,7 +50,7 @@ Browser features are needed to have asynchronicity, JS doesn't have them baked i
 ##### Queue
 ![](https://i.stack.imgur.com/CqutZ.png)
 
-## Promises
+## Intro Promises
 Readability enchancer called Promises
 - Special objects (Promise object) built into JavaScript that get returned immediately when we make a call to a web browser API/feature (e.g. Fetch) that's set up to return promises (not all are)
 - Act as placeholders for the data we hope to get back from the web browser feature's background work
