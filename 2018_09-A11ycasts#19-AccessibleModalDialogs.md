@@ -33,6 +33,7 @@ Array.from(document.body.childrent).forEach(child => {
 ```
 - `inert` is a proposed concept, not a real property
 - [Inert Polyfill](https://goo.gl/nXMS1V)
+  - Seems to apply `user-select: none` and `pointer-events: none` via css prop `[inert]`
 ### Apply focus to first button in dialog
 ```js
 dialog.querySelector('button').focus()
