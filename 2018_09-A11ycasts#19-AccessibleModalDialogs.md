@@ -27,7 +27,7 @@ Top Level Div
 - Don't want any actions on anything on the page to steal focus from the dialog
 - Markup: make the modal a top level sibling, immediate child of `<body>`. Trying to make sure we cannot lose focus to the rest of the page when in a modal.
 ```js
-Array.from(document.body.childrent).forEach(child => {
+Array.from(document.body.children).forEach(child => {
   if (child !== dialog) child.inert = true
 })
 ```
