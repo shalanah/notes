@@ -25,7 +25,7 @@ Tidbit: WebGL faster than Canvas
 #### Create directory
 `mkdir ....`
 #### Init project and open browser
-`canvas-sketch sketch.js --new --open`
+`canvas-sketch sketch.js --new --open` (also can use `--hot`)
 #### Save img to downloads
 `Command - S`
 #### Settings
@@ -456,4 +456,37 @@ void main () {
   vec3 color = mix(colorA, colorB, vUv.y - vUv.x * vUv.x * vUv.x - vUv.y * vUv.x);
   gl_FragColor = vec4(color, alpha);
 }
+```
+
+Basic fragment shaders with THREE.js
+```js
+new THREE.ShaderMaterial({
+  fragmentShader: `
+    void main () {
+      gl_FragColor = vec4(0.5, 1.0, 0.0, 1.0);
+    }
+  `,
+  color: random.pick(palette)
+})
+```
+Noise in shaders
+```
+const glsl = require('glslify');
+
+// Your glsl code
+const frag = glsl(`
+  precision highp float;
+
+  uniform float time;
+  uniform float aspect;
+  varying vec2 vUv;
+
+  // Include npm
+  #pragma glslify: noise = require('glsl-noise/simplex/3d'); 
+
+  void main () {
+    float n = noise(vec3(vUv.xy, time));
+    gl_FragColor = vec4(vec3(n), 1.0);
+  }
+`)
 ```
