@@ -11,6 +11,8 @@
 - Analyze how efficient an algorithm is
 - Care about orders of magnitude diff in time
 - Big O really is big picture... not about the details... don't care about small changes in time
+- bigocheatsheet.com
+  - Spacial complexity: sorting the array itself and not creating new arrays (O(1))... memory stuff :)
 
 ### Example: 3x^2 + x + 1
 - Showed with varying inputs. 
@@ -121,6 +123,7 @@ const factorial = n => {
 ### Bubble Sort
 - Not useful... don't use in production
 - Good starting point however
+- Animation of it working looks like numbers "bubble" up
 - Compare 2 numbers at a time then swap if out of order
 - Big O:
   - Inner loop checking indexes
@@ -148,6 +151,8 @@ const factorial = n => {
 // - Double checks
 // Done [4,5,6,7]
 ```
+
+#### Code
 ```js
 // My attempt
 const bubbleSort = arr => {
@@ -187,6 +192,41 @@ const bubbleSort = nums => {
   } while (swapped)
 }
 ```
+### Insertion Sort
+- Great for things that are kind of sorted, or close to sorted
+- Falls a part if array is not sorted AT ALL
+- Big O:
+  - **O(n^2)**
+  - Still better than bubble sort due to better coefficients
+  - Inner loop + outer loop still
+
+#### How it works
+- [5,3,6]
+- sub array starts at first index [5]
+  - sorted list of one
+- grab things from unsorted (`3`) and place them correctly in the sorted
+- Place 3 in relation to 5
+- [3,5,6]
+- Look at 6 does it go after 3? after 5?
+- Place after 5
+
+#### Code
+```js
+const insertionSort = arr => {
+  for (let i = 1, len = arr.length; i < len; i++) { // item being sorted
+     for (let j = 0; j < i; j++) { // "sub" array comparisions 
+       if (arr[i] < arr[j]) {
+         const temp = arr.splice(i, 1)
+         arr.splice(j, 0, temp[0])
+       }
+     }
+  }
+ return arr
+}
+```
+
+
+
 
 
 
