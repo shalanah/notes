@@ -218,12 +218,21 @@ const insertionSort = arr => {
        if (arr[i] < arr[j]) {
          const temp = arr.splice(i, 1)
          arr.splice(j, 0, temp[0])
+         break
        }
      }
   }
  return arr
 }
 ```
+### Merge sort
+- Divide and conquer
+- Recursion
+- Most of the time this is used by the browsers (except FF possible)
+- Dependable, sorted and unsorted both work about same time
+- Stitching sorted arrays together
+
+#### How it works
 
 
 
