@@ -231,8 +231,55 @@ const insertionSort = arr => {
 - Most of the time this is used by the browsers (except FF possible)
 - Dependable, sorted and unsorted both work about same time
 - Stitching sorted arrays together
+- Stable sort, keeps init order for items that are equivalent
+- Big O:
+  - **O(n log n)**
+  - Compare everything at least 1x
+  - Spacial complexity O(n)
 
 #### How it works
+- Base case list of 1
+- Stitch sorted arrays together
+- Recommends 2 functions one for "stitching" and one for "merging"
+```js
+// Two arrays [1,5,6] and [2,7,8]
+// - Start by comparing i=0 and j=0... if value of i < j then add to your new array [1]
+// - Compare i=1 and j=0
+// - [1,2]
+// - Compare i=1 j=1
+// - [1,2,5]
+// - Compare i=2 j=1
+// - [1,2,5,6]
+// - Now we have no more elements in our first array... add left over from second i=3 (DNE) add j=1 and beyond
+// - [1,2,5,6,7,8]
+```
+
+#### Code
+```js
+const stitch = (left, right) => { // going to detroy our arrays
+  let results = []
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) results.push(left.shift())
+    else results.push(right.shift())
+  }
+  return [...results, ...left, ...right]
+}
+
+const mergeSort = arr => {
+  if (arr.length < 2) return arr
+  
+  const len = arr.length
+  const middle = Math.floor(len / 2)
+  
+  const left = arr.slice(0, middle)
+  const right = arr.slice(middle)
+  
+  const sortedLeft = mergeSort(left)
+  const sortedRight = mergeSort(right)
+  
+  return stitch(sortedLeft, sortedRight)
+}
+```
 
 
 
