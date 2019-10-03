@@ -232,6 +232,8 @@ const insertionSort = arr => {
 - Dependable, sorted and unsorted both work about same time
 - Stitching sorted arrays together
 - Stable sort, keeps init order for items that are equivalent
+- Uses: stitch uses in Reddit interview 
+  - IE: 2 sorted arrays find median element
 - Big O:
   - **O(n log n)**
   - Compare everything at least 1x
@@ -280,6 +282,17 @@ const mergeSort = arr => {
   return stitch(sortedLeft, sortedRight)
 }
 ```
+### Quick Sort
+- Divide + conquer
+- Super powerful
+- Not hard to understand
+- If JS isn't doing merge sort it is doing quick sort
+- Lots of variations on quick sort deal with pivots
+
+#### How it works
+
+
+
 
 
 
