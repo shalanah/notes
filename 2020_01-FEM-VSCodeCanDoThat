@@ -1,0 +1,56 @@
+# VS Code Can Do That
+- https://burkeholland.gitbook.io/vs-code-can-do-that/essential-keyboard-shortcuts
+
+## Shortcut faves
+- command + , (settings)
+- Open File Switcher - Cmd/Ctrl + P
+- Opt + up or down moves the line
+- Opt + shift arrow up or down to dup
+- Command + opt [ or ] to FOLD
+- Reg expression find + cursors > use ALT ENTER to start cursors
+
+## Emmet faves
+- `!` tab html boilerplate
+- It is aware! ul>.yes*3 
+- tag name than tab (div + tab) > <div></div>
+```
+<ul>
+  <li class="yes"></li>
+  <li class="yes"></li>
+  <li class="yes"></li>
+</ul>
+```
+- __Ctrl spacebar__ if emmet bugs out especially on grouping
+- Grouping at same level ()+()
+- emmet: outward / inward (opt + shift + [ or ])
+- emmet: update image size (works on html and css)
+
+## NPM
+- `npm run` shows all you scripts
+- npm enable run from script explorer: turn on :) 
+- version lens - extensions 
+
+## Finding things
+- Command P - P last File
+- Command P minus the > gets file picker
+- Command @ - search doc structure
+- Command @: - groups parts of doc
+- Command @# - search across files
+- Command + 0 - Sidebar Focus 
+- Command + down to open sidebar focused file
+- Command + 1 - Back to editor
+- Rename everywhere F2
+- Command + Ctrl + . > light bulb stuff
+- //@ts-check > F8 move between errors or use `"javascript.implicitProjectConfig.checkJs": true`
+- F5 - debugger
+
+## Git
+- Change line in theme to see change
+- Ctrl + Shift + G > Source tab
+
+## Debugging
+- F5 - debugger
+- Logging (log points) - Right click
+
+## Debugging with Typescript
+- Command Shift B -> typescript tasks
