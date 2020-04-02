@@ -46,7 +46,13 @@ Function `functions/res.js`
 exports.handler = (event, _context, callback) => {
   console.log(event);
 
-  callback(null, { statusCode: 200, body: JSON.stringify({ yep: true }) });
+  callback(
+    null, // sending back an error
+    {
+      statusCode: 200,
+      body: JSON.stringify({ yep: true })
+    }
+  );
 };
 ```
 
@@ -56,7 +62,10 @@ JS to hit api
 form.onsubmit = e => {
   e.preventDefault();
   formState = "PENDING"; // could be a state
-  fetch("/api/res", { method: "POST", body: JSON.stringify(formData) })
+  fetch("/api/res", {
+    method: "POST", // no query string
+    body: JSON.stringify(formData)
+  })
     .then(res => res.json())
     .then(res => {
       console.log(res);
@@ -69,9 +78,56 @@ form.onsubmit = e => {
 };
 ```
 
+### Using with Gatsby
+
+> To run with `netlify dev` make sure you have a `gatsby-config.js` file at the root (can be empty!)
+
 ### Sending an email
 
-#### Services:
+#### Some Services:
 
 - Mailgun https://www.mailgun.com/pricing
 - Sendgrid https://sendgrid.com/pricing/
+
+#### Mailgun
+
+- Add packages `yarn add dotenv mailgun-js`
+- `.env`
+
+.env
+```
+# https://app.mailgun.com/app/account/security/api_keys
+MAILGUN_API_KEY=<your API key>
+
+# https://app.mailgun.com/app/sending/domains
+# Should start with sandbox....mailgun.org
+MAILGUN_DOMAIN=<your domain name>
+```
+
+functions/contact.js
+```js
+require("dotenv").config(); // loads .env file by default can config differently
+
+exports.handler = (event, _context, callback) => {
+  const mailgun = require("mailgun-js")({
+    apiKey: process.env.MAILGUN_API_KEY,
+    domain: process.env.MAILGUN_DOMAIN
+  });
+
+  const data = JSON.parse(event.body);
+
+  const email = {
+    from: `${data.name} <${data.email}>`,
+    to: process.env.SEND_EMAIL,
+    subject: "Netlify testing inquiry",
+    text: data.message
+  };
+
+  mailgun.messages().send(email, function(err, res) {
+    callback(err, {
+      statusCode: 200,
+      body: JSON.stringify(res)
+    });
+  });
+};
+```
