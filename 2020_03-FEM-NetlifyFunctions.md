@@ -23,8 +23,8 @@ exports.handler = async () => {
 
 ```toml
 [build]
-  functions = "functions" // dir
-  publish = "public" // needed this to not error out locally
+  functions = "functions" # dir
+  publish = "public" # needed this to not error out locally
 ```
 
 - Run locally `netlify dev`
@@ -35,7 +35,7 @@ exports.handler = async () => {
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
-  status = 200 // permanent instead of other 301 redirects
+  status = 200 # permanent instead of other 301 redirects
 ```
 
 ## Read event data + use callbacks in functions
@@ -45,7 +45,6 @@ Function `functions/res.js`
 ```js
 exports.handler = (event, _context, callback) => {
   console.log(event);
-
   callback(
     null, // sending back an error
     {
@@ -136,7 +135,7 @@ exports.handler = (event, _context, callback) => {
 Brand spanking new repo [Repo](https://github.com/shalanah/fem-jam-stack-protected-routes) 
 - Help Netlify recognize it is Gatsby by creating an empty `gastby-config.js`
 - Redirecting dashboard urls to dashboard component with `netlify.toml` (after doing `gatsby-node.js` don't quite understand if the redirects are even necessary)
-```yaml
+```toml
 [[redirects]]
   from = '/dashboard/*'
   to = '/dashboard'
@@ -147,4 +146,11 @@ Brand spanking new repo [Repo](https://github.com/shalanah/fem-jam-stack-protect
 - Creating basic pages (see repo)
 - `netlify dev` to get up and running
 - Route dashboard to gatsby dashboard elem with `gatsby-node.js`
-- 
+```js
+exports.onCreatePage = ({ page, actions }) => {
+  if (page.path.match(/^\/dashboard/)) {
+    page.matchPath = "/dashboard/*";
+    actions.createPage(page);
+  }
+};
+```
