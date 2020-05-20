@@ -131,3 +131,20 @@ exports.handler = (event, _context, callback) => {
   });
 };
 ```
+
+### Protected Pages w/Gatsby (authorized pages)
+Brand spanking new repo [Repo](https://github.com/shalanah/fem-jam-stack-protected-routes) 
+- Help Netlify recognize it is Gatsby by creating an empty `gastby-config.js`
+- Redirecting dashboard urls to dashboard component with `netlify.toml` (after doing `gatsby-node.js` don't quite understand if the redirects are even necessary)
+```yaml
+[[redirects]]
+  from = '/dashboard/*'
+  to = '/dashboard'
+  status = 200 # Rewrite, keeps url see https://docs.netlify.com/routing/redirects/redirect-options/#http-status-codes.
+```
+- `yarn init -y`
+- `yarn add gatsby react react-dom`
+- Creating basic pages (see repo)
+- `netlify dev` to get up and running
+- Route dashboard to gatsby dashboard elem with `gatsby-node.js`
+- 
