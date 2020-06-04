@@ -131,9 +131,9 @@ exports.handler = (event, _context, callback) => {
 };
 ```
 
-### Protected Pages w/Gatsby (authorized pages)
-Brand spanking new repo [Repo](https://github.com/shalanah/fem-jam-stack-protected-routes) 
-- Help Netlify recognize it is Gatsby by creating an empty `gastby-config.js`
+### Protected Pages w/Gatsby (authorized pages w/Login)
+Brand new repo [Repo](https://github.com/shalanah/fem-jam-stack-protected-routes) 
+- Help Netlify recognize it is Gatsby by adding an empty file called `gastby-config.js`
 - Redirecting dashboard urls to dashboard component with `netlify.toml` (after doing `gatsby-node.js` don't quite understand if the redirects are even necessary)
 ```toml
 [[redirects]]
@@ -154,3 +154,42 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 ```
+- Create `profile.js` page to be loaded into dashboard
+  - Add two links with `import {Link} from 'gatsby'`
+  - One is for private stuff
+  - Leverage gatsby helper class `activeClassName="active"`
+- Create dashboard components for secret and base data and login (logged in vs not) (ie `RouteBase` and `RouteSecret` and `RouteLogin`)
+- Use reach router which comes with gatsby
+- Dashboard ends up looking like this:
+```js
+import { navigate } from "gatsby"; // also from reach router
+import { Router } from "@reach/router";
+...
+
+const Dashboard = ({
+  location, // comes with Gatsby, lucky us!
+}) => {
+  useEffect(() => {
+    if (location.pathname.match(/^\/dashboard\/?$/)) {
+      navigate("/dashboard/login", { replace: true }); // replace history true get out of redirect looping
+    }
+  }, []);
+  return (
+    <Layout>
+      <Profile />
+      <Router>
+        <RouteBase path="/dashboard/base" />
+        <RouteSecret path="/dashboard/secret" />
+        <RouteLogin path="/dashboard/login" />
+      </Router>
+    </Layout>
+  );
+};
+```
+#### Authentication
+Typically with OAuth2, other opts (Node Passport, Octa, AuthZero, Cognito, other integrations)
+- Using Netlify identity
+- `yarn add react-netlify-identity-widget react-netlify-identity @reach/dialog @reach/tabs @reach/visually-hidden` (first two are not ui related)
+
+Last position: Adding Netlify Identity
+
