@@ -188,8 +188,22 @@ const Dashboard = ({
 ```
 #### Authentication
 Typically with OAuth2, other opts (Node Passport, Octa, AuthZero, Cognito, other integrations)
-- Using Netlify identity
+- We will be using Netlify Identity
 - `yarn add react-netlify-identity-widget react-netlify-identity @reach/dialog @reach/tabs @reach/visually-hidden` (first two are not ui related)
+- Need to deploy in order to use Netlify auth (also need a site url)
+- Add netlify identity context to app (`Layout.js`)
 
-Last position: Adding Netlify Identity
+Layout.js
+```js
+import { IdentityContextProvider } from "react-netlify-identity-widget";
+...
+return
+<IdentityContextProvider
+      url={"https://jamstack-intro-auth-shalanah.netlify.com"} // select a url to be deployed to soon!!!
+    >...
+</IdentityContextProvider>
+```
+
+- `netlify init` to deploy to url that you just made up
+- Click on `Identity` tab and then `Enable Identity` btn in netlify repo page
 
