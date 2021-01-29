@@ -102,46 +102,56 @@ Can use JS in mongo (ie: `2 + 4`, `Date.now()` etc)
 
 #### Basics
 
-- See what you got
-  - `show dbs`
-- Stats
-  - `db.stats()`
-- Getting help... show commands
-  - `db.help()`
-  - `db.[collection].help()`
-- Switch to db (also creates if you add any docs to it)
-  - `use [dbName]` (ie `use adoption`)
-- Insert into collection (also creates collection if it dne before)
-  - `db.[collection].insertOne(docObj))`
-  - `db.[collection].insertMany(docArray)`
-- `db.[collection].count()`
+```js
+show dbs
+// Help
+db.stats()
+db.help()
+db[collection].help()
+// Create / switch dbs
+use [dbName]
+// Insert
+db[collection].insertOne(docObj))
+db[collection].insertMany(docArray)
+// Count
+db[collection].count()
+```
 
 #### Standard querying
 
-- `db.[collection].findOne()` (can have nothing in it and return the only opt)
-- `db.[collection].findOne({...})`
-- `db.[collection].find({...})` (an iterator back)
-- Give me all of them
-  - `db.[collection].find({...}).toArray()`
-- Limit
-  - `db.[collection].find({...}).limit(num)` (use `skip` to start at a given place)
+```js
+db[collection].findOne(); // can have nothing in it and return the only opt)
+db[collection].findOne({...})
+db[collection].find({...}) // an iterator back
+db[collection].find({...}).toArray() // all of it back
+db[collection].find({...}).limit(num) // use with `skip`
+```
 
 #### Query operators (lots more opts)
 
-- `$gt`, `$gte`, `$lt`, `$ne`, `$eq` (equals - redundant mostly)
-- ie:
-  - `db.pets.count({type: "cat", age: {$gt: 12}})`
-  - `db.pets.count({type: "cat", age: {$gte: 12}})`
-  - `db.pets.find({name: "Fido", type: {$ne: "dog"}}).count()`
+`$gt`, `$gte`, `$lt`, `$ne`, `$eq` (equals - redundant mostly)
+
+```js
+db.pets.count({ type: "cat", age: { $gt: 12 } });
+db.pets.count({ type: "cat", age: { $gte: 12 } });
+db.pets.find({ name: "Fido", type: { $ne: "dog" } }).count();
+```
 
 #### Logical operators
 
-- `$and`, `$nor`, `$not`, `$or`
-- ie:
-  - `db.pets.count({type: "bird", $and: [{age: {$gte: 4}}, {age: {$lte: 8}}]})`
+`$and`, `$nor`, `$not`, `$or`
+
+```js
+db.pets.count({
+  type: "bird",
+  $and: [{ age: { $gte: 4 } }, { age: { $lte: 8 } }],
+});
+```
 
 #### Sort
 
-- `db.pets.find({type: "dog"}).sort({age: -1, breed: 1}).limit(5)`
+```js
+db.pets.find({ type: "dog" }).sort({ age: -1, breed: 1 }).limit(5);
+```
 
 #### Projections
