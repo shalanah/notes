@@ -40,7 +40,108 @@ ACID isn't always necessary... super safe but super slow. Some data should alway
 - Cool for small project + large
 - Document based
 
+### Vocab
+
+- **Db:** Group of collections
+- **Collections:** Like a table in a relation db
+- **Documents:** One entry in the collection
+
 ### Up and running
 
 - Start docker
--
+- Create mongo db `docker run --name test-mongo -dit -p 27017:27017 --rm mongo:4.4.1`
+- See `docker ps` output
+
+```sh
+$ docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                      NAMES
+............   mongo:4.4.1   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:27017->27017/tcp   test-mongo
+```
+
+- Connect to container and run the mongo cmd `docker exec -it test-mongo mongo`
+
+### Mocking in a bunch of data example
+
+Brian's example
+
+```js
+db.pets.insertMany(
+  Array.from({ length: 10000 }).map((_, index) => ({
+    name: [
+      "Luna",
+      "Fido",
+      "Fluffy",
+      "Carina",
+      "Spot",
+      "Beethoven",
+      "Baxter",
+      "Dug",
+      "Zero",
+      "Santa's Little Helper",
+      "Snoopy",
+    ][index % 9],
+    type: ["dog", "cat", "bird", "reptile"][index % 4],
+    age: (index % 18) + 1,
+    breed: [
+      "Havanese",
+      "Bichon Frise",
+      "Beagle",
+      "Cockatoo",
+      "African Gray",
+      "Tabby",
+      "Iguana",
+    ][index % 7],
+    index: index,
+  }))
+);
+```
+
+### Commands
+
+Can use JS in mongo (ie: `2 + 4`, `Date.now()` etc)
+
+#### Basics
+
+- See what you got
+  - `show dbs`
+- Stats
+  - `db.stats()`
+- Getting help... show commands
+  - `db.help()`
+  - `db.[collection].help()`
+- Switch to db (also creates if you add any docs to it)
+  - `use [dbName]` (ie `use adoption`)
+- Insert into collection (also creates collection if it dne before)
+  - `db.[collection].insertOne(docObj))`
+  - `db.[collection].insertMany(docArray)`
+- `db.[collection].count()`
+
+#### Standard querying
+
+- `db.[collection].findOne()` (can have nothing in it and return the only opt)
+- `db.[collection].findOne({...})`
+- `db.[collection].find({...})` (an iterator back)
+- Give me all of them
+  - `db.[collection].find({...}).toArray()`
+- Limit
+  - `db.[collection].find({...}).limit(num)` (use `skip` to start at a given place)
+
+#### Query operators (lots more opts)
+
+- `$gt`, `$gte`, `$lt`, `$ne`, `$eq` (equals - redundant mostly)
+- ie:
+  - `db.pets.count({type: "cat", age: {$gt: 12}})`
+  - `db.pets.count({type: "cat", age: {$gte: 12}})`
+  - `db.pets.find({name: "Fido", type: {$ne: "dog"}}).count()`
+
+#### Logical operators
+
+- `$and`, `$nor`, `$not`, `$or`
+- ie:
+  - `db.pets.count({type: "bird", $and: [{age: {$gte: 4}}, {age: {$lte: 8}}]})`
+
+#### Sort
+
+- `db.pets.find({type: "dog"}).sort({age: -1, breed: 1}).limit(5)`
+
+#### Projections
