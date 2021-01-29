@@ -108,18 +108,18 @@ show dbs
 db.stats()
 db.help()
 db[collection].help()
+
 // Create / switch dbs
 use [dbName]
+
 // Insert
 db[collection].insertOne(docObj))
 db[collection].insertMany(docArray)
+
 // Count
 db[collection].count()
-```
 
-#### Standard querying
-
-```js
+// Finds
 db[collection].findOne(); // can have nothing in it and return the only opt)
 db[collection].findOne({...})
 db[collection].find({...}) // an iterator back
@@ -155,3 +155,14 @@ db.pets.find({ type: "dog" }).sort({ age: -1, breed: 1 }).limit(5);
 ```
 
 #### Projections
+
+Only ask for what you need (security reasons) and smaller
+
+- Can use 0 to disallow explicitly and the rest comes in
+
+```js
+db.pets.find(
+  { type: "dog" },
+  { name: 1 /* include */, _id: 0 /* do not include */ }
+);
+```
