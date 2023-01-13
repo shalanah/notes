@@ -16,6 +16,10 @@ DFX Files learnings
 - Can export/view in Illustrator
 - AutoCAD
 
+# Libs to look into
+
+- python https://pypi.org/project/ezdxf/
+
 # Sources
 
 - https://www.adobe.com/creativecloud/file-types/image/vector/dxf-file.html
