@@ -1,2 +1,21 @@
+DFX Files learnings
+
+# Notes
+
+- Drawing Exchange Format
+- Vector, open-source
+- Created in 1982
+- Stored as plain text (so not compressed BUT can is human readable then)
+- However, you cannot print DXF files 3D, so you’ll need to convert them to STL format first?
+- Doesn't fully support 3D elements (only 2D)
+- Can covert to PDF, DWG, or SVG
+
+# Software
+
+- Free for opening https://www.qcad.org/
+- Can export from Illustrator even
+
+# Sources
+
 - https://www.adobe.com/creativecloud/file-types/image/vector/dxf-file.html
--
+- https://fileinfo.com/extension/dfx
