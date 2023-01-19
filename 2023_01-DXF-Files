@@ -12,7 +12,9 @@ DXF Files learnings
 
 ## Layer naming
 
-- AutoCAD but true for dxf as well https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2015/ENU/AutoCAD-Core/files/GUID-CE211679-F264-4128-BE00-BF4E0E7DEA8E-htm.html
+https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2015/ENU/AutoCAD-Core/files/GUID-CE211679-F264-4128-BE00-BF4E0E7DEA8E-htm.html
+
+- AutoCAD but true for dxf as well
   - A layer name can be up to 255 characters long (double-byte or alphanumeric), and include letters, numbers, spaces, and several special characters. Layer lists are sorted alphanumerically, with special characters first, numbers in value order, and alpha characters in alphabetic order.
   - Layer names cannot include the following characters: < > / \ “ : ; ? \* | = ‘
   - The Layer Properties Manager sorts layers alphabetically by name.
