@@ -10,6 +10,13 @@ DFX Files learnings
 - Doesn't fully support 3D elements (only 2D)
 - Can covert to PDF, DWG, or SVG
 
+## Layer naming
+
+- AutoCAD but true for dxf as well https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2015/ENU/AutoCAD-Core/files/GUID-CE211679-F264-4128-BE00-BF4E0E7DEA8E-htm.html
+  - A layer name can be up to 255 characters long (double-byte or alphanumeric), and include letters, numbers, spaces, and several special characters. Layer lists are sorted alphanumerically, with special characters first, numbers in value order, and alpha characters in alphabetic order.
+  - Layer names cannot include the following characters: < > / \ “ : ; ? \* | = ‘
+  - The Layer Properties Manager sorts layers alphabetically by name.
+
 # Software
 
 - Free for opening https://www.qcad.org/
@@ -18,7 +25,7 @@ DFX Files learnings
 
 # Libs to look into
 
-- python https://pypi.org/project/ezdxf/
+- python https://pypi.org/project/ezdxf/ (+flask)
 - js https://github.com/ognjen-petrovic/js-dxf
 - coverts svg to dxf https://github.com/Zigazou/svg2dxf
 
